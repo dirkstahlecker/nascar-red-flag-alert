@@ -10,22 +10,22 @@ from email.mime.text import MIMEText
 
 import smtplib, ssl
 
+def parseConfigVar(input):
+	return input[input.index(":") + 1 : ].strip();
+
 configs = open('config.txt').read()
 configs = configs.split("\n")
-receiver_email = configs[0]
-chromedriver_path = configs[1]
-
-receiver_email = receiver_email[receiver_email.index(":") + 1 : ].strip();
-chromedriver_path = chromedriver_path[chromedriver_path.index(":") + 1 : ].strip()
+receiver_email = parseConfigVar(configs[0])
+chromedriver_path = parseConfigVar(configs[1])
 
 print(receiver_email)
 print(chromedriver_path)
 
+password = sys.argv[1]
 port = 465  # For SSL
 smtp_server = "smtp.gmail.com"
 sender_email = "sendmailprogrammatically@gmail.com"  # Enter your address
 # password = input("Type your password and press enter: ")
-password = "ejofjnquvjzqdakt" #app password
 msg = MIMEMultipart("alternative")
 msg["Subject"] = 'Red Flag Has Been Lifted'
 msg["From"] = receiver_email
@@ -33,16 +33,16 @@ msg.attach(MIMEText('\nsent via python', 'plain'))
 
 
 #for testing
-INITIAL_STATE = "flag-red"
-WANTED_STATE = "flag-caution"
+INITIAL_STATE = "flag-green"
+WANTED_STATE = "flag-yellow"
 
 print("Initial state: " + INITIAL_STATE)
 print ("Looking for: " + WANTED_STATE)
 
 
-URL = sys.argv[1] #take URL from command line
+URL = sys.argv[2] #take URL from command line
 
-driver = webdriver.Chrome(executable_path=r"//Users/dirkstahlecker/programming/nascar-red-flag-alert/chromedriver")
+driver = webdriver.Chrome(executable_path=chromedriver_path)
 # driver = webdriver.Chrome()
 driver.implicitly_wait(10)
 driver.get(URL)
