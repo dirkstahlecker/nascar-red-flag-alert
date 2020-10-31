@@ -33,7 +33,7 @@ msg.attach(MIMEText('\nsent via python', 'plain'))
 
 
 #for testing
-INITIAL_STATE = "flag-green"
+INITIAL_STATE = "flag-red"
 WANTED_STATE = "flag-caution"
 
 print("Initial state: " + INITIAL_STATE)
