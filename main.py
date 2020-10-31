@@ -10,10 +10,20 @@ from email.mime.text import MIMEText
 
 import smtplib, ssl
 
+configs = open('config.txt').read()
+configs = configs.split("\n")
+receiver_email = configs[0]
+chromedriver_path = configs[1]
+
+receiver_email = receiver_email[receiver_email.index(":") + 1 : ].strip();
+chromedriver_path = chromedriver_path[chromedriver_path.index(":") + 1 : ].strip()
+
+print(receiver_email)
+print(chromedriver_path)
+
 port = 465  # For SSL
 smtp_server = "smtp.gmail.com"
 sender_email = "sendmailprogrammatically@gmail.com"  # Enter your address
-receiver_email = "2082514171@txt.att.net"  # Enter receiver address
 # password = input("Type your password and press enter: ")
 password = "ejofjnquvjzqdakt" #app password
 msg = MIMEMultipart("alternative")

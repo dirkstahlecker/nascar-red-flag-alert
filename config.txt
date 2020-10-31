@@ -1,0 +1,2 @@
+receiver_email: 2082514171@txt.att.net
+chromedriver_path: //Users/dirkstahlecker/programming/nascar-red-flag-alert/chromedriver
