@@ -34,7 +34,7 @@ msg.attach(MIMEText('\nsent via python', 'plain'))
 
 #for testing
 INITIAL_STATE = "flag-green"
-WANTED_STATE = "flag-yellow"
+WANTED_STATE = "flag-caution"
 
 print("Initial state: " + INITIAL_STATE)
 print ("Looking for: " + WANTED_STATE)
@@ -64,7 +64,8 @@ def main():
 			return;
 		except:
 			#do nothing
-			time.sleep(5)
+			print("Didn't find wanted state...")
+			# time.sleep(5)
 
 
 def sendMessage():
